@@ -332,12 +332,12 @@ Los pesos y los cortes son parámetros que define el área de cobro.''')
         mt = {s: PAQ['segmentos'][s]['metricas_prueba'] for s in PAQ['segmentos']}
         items = [(True, 'Ordena mejor que la fecha de prescripción', 'La mejora en el 10 % de mayor prioridad supera el 20 % exigido y es estadísticamente significativa.'),
                  (True, 'La probabilidad es confiable', f"Error de calibración de {num(mt['natural']['ECE'], 3)} y {num(mt['juridica']['ECE'], 3)}, frente a un límite de 0,10."),
-                 (False, 'No identifica cada caso individual', f"Usado como clasificador sí/no detecta {pct(mt['natural']['Recall'])} de los desenlaces favorables (la meta era 70 %). Sirve para ordenar, no para decidir caso por caso.")]
+                 (False, 'No identifica cada caso individual', f"Gestionando el 10 % de mayor prioridad encuentra el {pct(mt['natural']['Recall'])} (naturales) y el {pct(mt['juridica']['Recall'])} (jurídicas) de los desenlaces favorables; la meta era 70 %. Sirve para ordenar, no para decidir caso por caso.")]
         html(''.join(f'<div class="check"><div class="i" style="background:{"#0E9F8E" if ok else "#C8102E"}">{"✓" if ok else "!"}</div><div class="tx"><b>{t}</b><br>{d}</div></div>' for ok, t, d in items))
     seccion('Ficha técnica', 'Métricas sobre el conjunto de prueba (los expedientes más recientes, que no participaron en el entrenamiento).')
     ficha = pd.DataFrame({NOMBRE_SEG[s]: {'Clasificador': d['familia'], 'Expedientes de entrenamiento': miles(d['n_entrenamiento']), 'Variables': str(len(d['variables'])),
                                           'Tasa base de desenlace favorable': pct(d['tasa_base'], 1), 'ROC-AUC': num(d['metricas_prueba']['ROC-AUC'], 3), 'PR-AUC': num(d['metricas_prueba']['PR-AUC'], 3),
-                                          'Precision / Recall / F1': f"{num(d['metricas_prueba']['Precision'], 2)} / {num(d['metricas_prueba']['Recall'], 2)} / {num(d['metricas_prueba']['F1'], 2)}",
+                                          'Precision / Recall / F1 (10 % de mayor prioridad)': f"{num(d['metricas_prueba']['Precision'], 2)} / {num(d['metricas_prueba']['Recall'], 2)} / {num(d['metricas_prueba']['F1'], 2)}",
                                           'Lift en el decil superior': num(d['metricas_prueba']['Lift decil 1'], 2), 'Error de calibración': num(d['metricas_prueba']['ECE'], 3),
                                           'Cartera vigente de referencia': miles(len(d['referencia']['prob'])) + ' expedientes'} for s, d in PAQ['segmentos'].items()})
     st.table(ficha)

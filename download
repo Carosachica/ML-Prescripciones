@@ -1,0 +1,35 @@
+# ---- Datos: no se publican ----
+# Archivos originales (contienen datos personales) y datos preparados
+*.xlsx
+*.xls
+datos/
+Input/
+Output/
+
+# ---- Resultados que los notebooks vuelven a generar ----
+resultados/
+
+# ---- Python ----
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.venv/
+venv/
+env/
+
+# ---- Streamlit: claves y configuración local ----
+.streamlit/secrets.toml
+
+# ---- Sistema operativo y editores ----
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# OJO: la carpeta modelo/ SÍ debe subirse (la aplicación la necesita):
+#   modelo/modelo_priorizacion_ffds.joblib
+#   modelo/demo_expedientes_nuevos.csv
+#   modelo/cartera_vigente_priorizada.csv
+#   modelo/curva_ganancia.csv
+# También debe subirse .streamlit/config.toml (tema de colores).

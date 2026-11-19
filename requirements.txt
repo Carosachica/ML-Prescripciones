@@ -1,5 +1,5 @@
-# La versión de scikit-learn debe ser la misma con la que se guardó modelo/modelo_priorizacion_ffds.joblib.
-# Si regenera el modelo con el Notebook 1 en otro entorno, cambie aquí la versión por la de ese entorno.
+# La versión de scikit-learn debe ser la misma con la que se guardó modelo/modelo_priorizacion_ffds.joblib (1.9.1).
+# Con otra versión el modelo puede no cargar o dar resultados distintos. Requiere Python 3.11 o superior.
 streamlit>=1.36
 scikit-learn==1.9.1
 numpy
