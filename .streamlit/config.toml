@@ -1,3 +1,4 @@
+# Tema de la aplicación (se fuerza el tema claro para que los colores institucionales se vean igual en cualquier equipo)
 [theme]
 base = "light"
 primaryColor = "#0B2545"
